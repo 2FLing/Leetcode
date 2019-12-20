@@ -3,6 +3,7 @@
 #define _SOLUTIONS
 #include<vector>
 #include<iostream>
+#include<limits.h>
 using namespace std;
 class Solutions
 {
@@ -23,19 +24,22 @@ public:
 		}
 		return element;
 	}
+	//This function receive a 32 bit integer
+	// and reverse the integer
 	int reverse(int x)
 	{
-		int one, two, three,result;
-		one = x / 100;
-		two = x / 10 % 10;
-		three = x % 10;
-		if (three != 0)
-		{
-			result = three * 100 + two * 10 + one;
-		}
+		if (x > INT32_MAX or x < INT32_MIN)
+			return 0;
 		else
-			result = two * 10 + one;
-		return result;
+		{
+			int y = 0;
+			while (x!=0)
+			{
+				y = y * 10 + x % 10;
+				x /= 10;
+			}
+			return y;
+		}
 	}
 };
 #endif
